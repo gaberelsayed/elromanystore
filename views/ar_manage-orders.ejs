@@ -1,0 +1,70 @@
+<%- include('ar_parts/ar_header') %>
+<%- include('ar_parts/ar_navbar') %>
+
+<div class="container">
+    <% if(items.length === 0) { %>
+        <p class="alert alert-danger">لا يوجد طلبات</p>
+    <% } else { %>
+        <table id="OrderTable" class="table table-bordered">
+            <thead style="background-color: goldenrod; color: honeydew;">
+            <td>رقم</td>
+            <td>الاسم</td>
+            <td>المنتج</td>
+            <td>السعر</td>
+            <td>الكمية</td>
+            <td>الاجمالي</td>
+            <td>الموبايل</td>
+            <td>العنوان</td>
+            <td>الحاله</td>
+            <td>الاجراء التالي</td>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < items.length; i++) { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= items[i].userId %></td>
+                    <td><a href="/ar_product/<%= items[i].productId %>"><%= items[i].name%></a></td>
+                    <td><%= items[i].price %> جنيه </td>
+                    <td><%= items[i].amount %></td>
+                    <td><%= items[i].price * items[i].amount %> جنيه </td>
+                    <td><%= items[i].phonenumber %></td>
+                    <td style="width: 9rem;"><%= items[i].address %></td>
+                    <td><%= items[i].status %> </td>
+                    <td>
+                        <% if (items[i].status === 'pending') { %>
+                        <form style="display: inline-block" method="POST" action="/admin/ar_orders">
+                            <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                            <input type="hidden" name="status" value="sent">
+                            <input type="submit" class="btn btn-outline-primary btn-sm" value="ترتب">
+                        </form>
+                        <% } %>
+                        <% if (items[i].status === 'pending' || items[i].status === 'sent') { %>
+                        <form style="display: inline-block" method="POST" action="/admin/ar_orders">
+                            <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                            <input type="hidden" name="status" value="complete">
+                            <input type="submit" class="btn btn-outline-success btn-sm" value="تم">
+                        </form>
+                        <form method="POST">
+                            <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                            <input type="submit" class="btn btn-outline-danger btn-sm" value="حذف" formaction="/admin/ar_orders/cancel">
+                        </form>
+                        <% } %>
+                        <% if (items[i].status === 'complete') { %>
+                        <form method="POST">
+                            <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                            <input type="submit" class="btn btn-outline-danger btn-sm" value="حذف القديم" formaction="/admin/ar_orders/cancel">
+                        </form>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table> 
+    <% } %>
+</div>
+
+
+
+
+
+ 

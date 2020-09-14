@@ -1,0 +1,55 @@
+<%- include('ar_parts/ar_header')%>
+<%- include('ar_parts/ar_navbar')%>
+
+<div class="container">
+    <% if(!product) { %>
+        <div class="alert alert-danger">لا يوجد منتجات بهذا الرقم</div>
+    <% } else {%>
+    <div class="row">
+        <div class="col col-12 col-md-6">
+            <div class="card" style="width: 100%;">
+                <img src="/<%= product.image%>" class="card-img-top" style="max-height: 400px">
+                <div class="card-body">
+                    <form action="/ar_cart" method="POST" class="add-to-cart-form">
+                        <input type="number" name="amount" class="form-control">
+                        <input type="hidden" name="name" value="<%= product.name%>">
+                        <input type="submit" value="اضافه للعربة" class="btn btn-primary">
+                    </form>
+                </div> 
+            </div>
+        </div>
+        <div class="col col-12 col-md-6 product-detail">
+            <h3><%= product.name%></h3>
+            <h5><span style="color: goldenrod;"> السعر : </span><%= product.price%> جنيه </h5>
+            <h5><span style="color: goldenrod;"> الوصف : </span><%= product.description%></h5>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+          <div class="page-header">
+            <h2> التعليقات </h2>
+            <h3><small class="pull-right">45 تعليق</small></h3>
+          </div>
+           <div class="comments-list">
+               <div class="media">
+                    <a class="media-left" href="#"><img src="http://lorempixel.com/40/40/people/1/"></a>
+                    <div class="media-body">
+                    <i class="icon-user"></i>
+                      <h4>ابراهيم احمد</h4>
+                      منتج جميل
+                      <p class="pull-right" style="margin-left : 1rem;"><small>منذ 5 أيام</small></p>
+                      <p><small><a href="/">إعجاب</a> - <a href="">مشاركة</a></small></p>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('ar_parts/ar_footer')%>

@@ -1,0 +1,42 @@
+<%- include('ar_parts/ar_header') %>
+<%- include('ar_parts/ar_navbar') %>
+
+<div class="container">
+    <% if(items.length === 0) { %>
+        <p class="alert alert-danger">لا يجد طلبات</p>
+    <% } else { %>
+        <table class="table table-bordered">
+            <thead style="background-color: goldenrod; color: honeydew;">
+                <td>رقم</td>
+                <td>اسم المنتج</td>
+                <td>السعر</td>
+                <td>الكمية</td>
+                <td>الاجمالي</td>
+                <td style="width: 15rem;">العنوان</td>
+                <td>الحاله</td>
+                <td></td>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < items.length; i++) { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><a href="/ar_product/<%= items[i].productId %>"><%= items[i].name %></a></td>
+                    <td><%= items[i].price %> جنيه </td>
+                    <form method="POST">
+                        <td><%= items[i].amount %></td>
+                        <td><%= items[i].price * items[i].amount %> جنيه </td>
+                        <td><%= items[i].address %></textarea></td>
+                        <td><%= items[i].status %></td>
+                        <td>
+                        <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                        <input type="submit" class="btn btn-outline-danger btn-sm" value="حذف" formaction="/ar_orders/cancel">
+                        </td>
+                    </form>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+
+<%- include('ar_parts/ar_footer') %>

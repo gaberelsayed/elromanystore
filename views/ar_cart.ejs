@@ -1,0 +1,38 @@
+<%- include('ar_parts/ar_header') %>
+<%- include('ar_parts/ar_navbar') %>
+
+<div class="container">
+    <% if(items.length === 0) { %>
+        <p class="alert alert-danger">لا يوجد مشتريات</p>
+    <% } else { %>
+        <table class="table table-bordered">
+            <thead style="background-color: goldenrod; color: honeydew;">
+                <td>رقم الطلب</td>
+                <td>اسم المنتج</td>
+                <td>السعر</td>
+                <td>الكمية</td>
+                <td>الاجمالي</td> 
+                <td></td>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < items.length; i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><a href="/ar_product/<%= items[i].productId %>"><%= items[i].name %></a> </td>
+                        <td><%= items[i].price %> جنيه </td>
+                        <form method="POST">
+                            <td><input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"> </td>
+                            <td><%= items[i].price * items[i].amount %> جنيه </td>
+                            <td><input type="hidden" name="cartId" value="<%= items[i]._id %>">
+                                <input type="submit" class="btn btn-outline-success btn-sm" value="حفظ" formaction="/ar_cart/save">
+                                <a class="btn btn-outline-primary btn-sm" href="/ar_verify-order?order=<%= items[i]._id %>"> طلب </a>
+                                <input type="submit" class="btn btn-outline-danger btn-sm" value="حذف" formaction="/ar_cart/delete">
+                            </td>
+                        </form>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+<%- include('ar_parts/ar_footer') %>

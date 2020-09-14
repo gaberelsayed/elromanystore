@@ -1,0 +1,19 @@
+<%- include('ar_parts/ar_header')%>
+<%- include('ar_parts/ar_navbar')%>
+
+<div class="container text-center">
+    <h4 style="color: goldenrod;">تأكيد الطلب</h4>
+    <% if(validationError) { %><p class="alert alert-danger"><%= validationError.msg %></p><% } %>
+    <form action="/ar_orders" method="POST">
+        <input type="hidden" name="cartId"    value="<%= cart._id%>">
+        <input type="hidden" name="name"      value="<%= cart.name%>">
+        <input type="hidden" name="price"     value="<%= cart.price%>">
+        <input type="hidden" name="amount"    value="<%= cart.amount%>">
+        <input type="hidden" name="productId" value="<%= cart.productId%>">
+        <input type="hidden" name="userId"    value="<%= cart.userId%>">
+        <textarea type="text" name="address"  placeholder="العنوان" class="form-control"></textarea>
+        <input type="text" name="phonenumber" placeholder="رقم الموبايل" class="form-control">
+        <input type="submit" value="تأكيد" class="btn btn-outline-primary">
+    </form>
+</div>
+<%- include('ar_parts/ar_footer')%>

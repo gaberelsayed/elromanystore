@@ -1,0 +1,46 @@
+<%- include('ar_parts/ar_header')%>
+<%- include('ar_parts/ar_navbar')%>
+
+<div class="container text-center">
+    <% if(productAdded) { %><p class="alert alert-success">تم إضافة المنتج بنجاح</p><% } %>
+    <h4 style="color: goldenrod;">إضافة منتج</h4>
+    <form action="/admin/add" method="POST" enctype="multipart/form-data">
+
+        <input type="text" class="form-control" name="name" placeholder="إسم المنتج">
+        <% let nameError = validationErrors.find(err => err.param === 'name') %>
+        <% if (nameError) { %><p class="alert alert-danger"><%= nameError.msg %></p><% } %>
+ 
+        <input type="number" class="form-control" name="price" placeholder="سعر المنتج">
+        <% let priceError = validationErrors.find(err => err.param === 'price') %>
+        <% if (priceError) { %><p class="alert alert-danger"><%= priceError.msg %></p><% } %>
+
+        <input type="number" class="form-control" name="amountEnteredStock" placeholder="كمية المنتج ">
+        <% let amountEnteredStockError = validationErrors.find(err => err.param === 'amountEnteredStock') %>
+        <% if (amountEnteredStockError) { %><p class="alert alert-danger"><%= amountEnteredStockError.msg %></p><% } %>
+
+        <textarea type="password" class="form-control" name="description" placeholder="وصف المنتج"></textarea>
+        <% let descriptionError = validationErrors.find(err => err.param === 'description') %>
+        <% if (descriptionError) { %><p class="alert alert-danger"><%= descriptionError.msg %></p><% } %>
+        
+        <select type="password" class="form-control" name="category">
+        <option value="" selected>إختار القائمة</option>
+        <option value="Perfumes">عطور           </option>
+        <option value="clothes">ملابس            </option>
+        <option value="Antiseptics">مطهرات      </option>
+        <option value="Foods">أغذية             </option>
+        <option value="Glasses">نظارات شمسية   </option>
+        <option value="Beauty">تجميل            </option>
+        <option value="Slimming">تخسيس          </option>
+        </select>
+
+        <% let categoryError = validationErrors.find(err => err.param === 'category') %>
+        <% if (categoryError) { %><p class="alert alert-danger"><%= categoryError.msg %></p><% } %>
+
+        <input type="file" class="form-control" name="image" placeholder="إرفع صورة المنتج">
+        <% let imageError = validationErrors.find(err => err.param === 'image') %>
+        <% if (imageError) { %><p class="alert alert-danger"><%= imageError.msg %></p><% } %>
+        <input type="submit" value="إضافة منتج" class="btn btn-outline-primary">
+
+    </form>
+</div>
+

@@ -1,0 +1,48 @@
+<%- include('ar_parts/ar_header')%>
+<%- include('ar_parts/ar_navbar')%>
+
+<div class="container text-center">
+<% if(products.length === 0) { %>
+    <div class="alert alert-danger">لا يوجد منتجات في المخزن</div>
+<% } else { %>
+    <table class="table table-bordered"> 
+        <thead>
+        <tr style="background-color: goldenrod; color: honeydew;">
+            <td>رقم</td>
+            <td>اسم القائمة</td>
+            <td>اسم المنتج</td>
+            <td>سعر المنتج</td>
+            <td>الكمية الاصلية</td>
+            <td>باقي في المخزن</td>
+            <td>كمية تم بيعها</td>
+            <td>كمية مطلوبة حالياً</td>
+            <td></td>
+        </tr>
+        </thead>
+    <tbody>
+    <% let i=1; %>
+    <% for(let product of products) { %>
+    <tr>
+        <td><%= i++ %></td>
+        <td><%= product.category%></td>
+        <td><%= product.name%></td>
+        <td><%= product.price%> جنيه </td>
+        <td><%= product.amountEnteredStock%></td>
+        <td><%= product.amountrequested%></td>
+        <td><%= product.amountRemained%></td>
+        <td><%= product.amountSold%></td>
+        <td>
+        <form method="POST" class="add-to-cart-form">
+            <input type="hidden" name="id" value="<%= product._id%>">
+            <input type="submit" class="btn btn-outline-danger" value="حذف" formaction="/admin/cadd/deleteStore">
+        </form>
+        </td>
+    </tr>
+    <% } %>
+    </tbody>
+    </table>
+<% } %> 
+</div>
+
+
+

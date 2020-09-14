@@ -1,0 +1,30 @@
+<%- include('ar_parts/ar_header')%>
+<%- include('ar_parts/ar_navbar')%> 
+
+<div class="container">
+    <% if(users.length === 0) { %>
+        <p class="alert alert-danger">لا يوجد طلبات</p>
+    <% } else { %>
+        <table class="table table-bordered">
+            <thead style="background-color: goldenrod; color: honeydew;">
+                <td>رقم</td>
+                <td>الاسم</td>
+                <td>رقم الهاتف</td>
+                <td>العنوان</td>
+                <td>الايميل</td>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < users.length; i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= users[i].username %></td>
+                        <td><%= users[i].phonenumber %></td>
+                        <td><%= users[i].address %></td>
+                        <td><%= users[i].email %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </form>
+    <% } %>
+</div>

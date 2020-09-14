@@ -1,0 +1,67 @@
+nav {
+    margin-bottom: 15px;
+}
+.container { text-align: right; }
+.row,
+.col {
+    margin-bottom: 15px;
+}
+
+.col {
+    padding: 0 7.5px;
+}
+
+form.filter .row {
+    margin-bottom: 0;
+}
+
+.add-to-cart-form {
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+h3 {
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.product-detail h3 { border-bottom: 3px solid #000;}
+table, td { border: 1px solid #000; padding: 10px;  }
+body { padding-bottom: 20px; }
+textarea.form-control { height: 120px;    resize: none; }
+.nav-item:active { text-decoration: gold; }
+
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
+
+.navbar.navbar-expand-md.navbar-dark.bg-dark.bg-light .navbar-nav .nav-item        .nav-link { color: white;}
+.navbar.navbar-expand-md.navbar-dark.bg-dark.bg-light .navbar-nav .nav-item:active .nav-link { color: goldenrod;}
+.navbar.navbar-expand-md.navbar-dark.bg-dark.bg-light .navbar-nav .nav-item:hover  .nav-link { color: goldenrod;}
+
+.social-network a.icoFacebook { background-color:white; }
+.social-network a.icoFacebook:hover { background-color:#3B5998; color:#fff;  }
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px; height: 68px;
+    text-align: center;
+    text-decoration: none;
+}
+  
+/* Add a hover effect if you want */
+.fa:hover { opacity: 0.7;}
+/* Facebook */
+.fa-facebook { background:goldenrod; color: white; }
+.fas { color:goldenrod; background:white; }
+.fas:active { color:red;   }
+.a .navbar-brand { color: goldenrod;}
+
+
+
