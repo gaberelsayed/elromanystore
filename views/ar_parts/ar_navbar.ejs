@@ -1,20 +1,23 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark bg-light" >
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" >
   <div class="container">
-  <div class="collapse navbar-collapse" style="height: 3rem;" id="navbarSupportedContent">
+  <button class="navbar-toggler ml-auto" data-toggle="collapse" data-target="#navbarMenu1">
+    <span class="navbar-toggler-icon"></span>
+  </button>
     <a href="/"><p style="color: goldenrod;" class="navbar-brand">الروماني للتسوق</p></a>
-    <ul class="navbar-nav justify-content-end mr-right mt-2 mt-lg-0" >
+    <div class="collapse navbar-collapse" style="height: 2.5rem;" id="navbarMenu1">
+    <ul class="navbar-nav justify-content-end mt-2 mt-lg-0">
       <% if(isAdmin) { %>
-        <li class="nav-item <%= pageTitle === 'عربة التسوق' ? 'active' : '' %>">   <a class="nav-link" href="/ar_cart">عربة التسوق          </a></li>
+        <li class="nav-item <%= pageTitle === 'عربة التسوق' ? 'active' : '' %>">     <a class="nav-link" href="/ar_cart">عربة التسوق          </a></li>
         <li class="nav-item <%= pageTitle === 'الطلبات' ? 'active' : '' %>">         <a class="nav-link" href="/ar_orders">الطلبات            </a></li>
         <li class="nav-item <%= pageTitle === 'إضافة منتج جديد' ? 'active' : '' %>"><a class="nav-link" href="/admin/add">اضافة منتج         </a></li>
         <li class="nav-item <%= pageTitle === 'إدارة الطلبات' ? 'active' : '' %>">  <a class="nav-link" href="/admin/ar_orders">ادارة الطلبات</a></li>
         <li class="nav-item <%= pageTitle === 'إدارة المخزن' ? 'active' : '' %>">   <a class="nav-link" href="/admin/cadd">ادارة المخزن      </a></li>
         <li class="nav-item <%= pageTitle === 'العملاء' ? 'active' : '' %>">          <a class="nav-link" href="/admin/users">العملاء            </a></li>
         <% } else if(isUser) { %>
-        <li class="nav-item <%= pageTitle === 'الروماني' ? 'active' : '' %>"><a class="nav-link" href="/">الصفحة الرئيسية     </a></li>
-        <li class="nav-item <%= pageTitle === 'عربة التسوق' ? 'active' : '' %>">  <a class="nav-link" href="/ar_cart">عربة التسوق   </a></li>
-        <li class="nav-item <%= pageTitle === 'الطلبات' ? 'active' : '' %>"> <a class="nav-link" href="/ar_orders">الطلبات     </a></li>
-        <li class="nav-item <%= pageTitle === 'إتصل بنا' ? 'active' : '' %>"><a class="nav-link" href="/ar_Contact_Us">إتصل بنا</a></li>
+        <li class="nav-item <%= pageTitle === 'الروماني' ? 'active' : '' %>">   <a class="nav-link" href="/">الصفحة الرئيسية     </a></li>
+        <li class="nav-item <%= pageTitle === 'عربة التسوق' ? 'active' : '' %>"><a class="nav-link" href="/ar_cart">عربة التسوق   </a></li>
+        <li class="nav-item <%= pageTitle === 'الطلبات' ? 'active' : '' %>">    <a class="nav-link" href="/ar_orders">الطلبات     </a></li>
+        <li class="nav-item <%= pageTitle === 'إتصل بنا' ? 'active' : '' %>">    <a class="nav-link" href="/ar_Contact_Us">إتصل بنا</a></li>
         <% } else { %>
         <li class="nav-item <%= pageTitle === 'الروماني' ? 'active' : '' %>">  <a class="nav-link" href="/">الصفحة الرئيسية     </a></li>
         <li class="nav-item <%= pageTitle === 'سجل الدخول' ? 'active' : '' %>"><a class="nav-link" href="/ar_login"> الدخول      </a></li>
@@ -22,21 +25,23 @@
         <li class="nav-item <%= pageTitle === 'إتصل بنا' ? 'active' : '' %>">  <a class="nav-link" href="/ar_Contact_Us">إتصل بنا</a></li>
       <% } %>
     </ul>
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0"> 
+    </div>
+    <div class="collapse navbar-collapse" style="height: 3rem;" id="navbarMenu2">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> 
       <li class="nav-item">
         <a href="https://www.facebook.com/groups/327326867683148">
           <i class="fa fa-facebook" style="font-size:24px; color:blue;"></i></a>
       </li>
       <li class="nav-item">
         <p style="padding-right: 5rem; color: goldenrod; font-size: 1rem; padding-top: 1rem;">
-          <a color: goldenrod;" href="/ar_index" style="color: goldenrod;">عربي</a>
-          ||<a href="/" style="color: white">English</a>
+          <a style="color: goldenrod;" href="/">عربي</a>
+          ||<a style="color: white" href="/">English</a>
         </p>
       </li>
-    </ul>
+    <li class="nav-item">
     <% if(isUser) { %>
     <form action="/ar_logout" method="POST">
-      <button style="margin-right: 3.5rem;" class="btn btn-info btn-2X" type="submit" value="Logout"> 
+      <button style="margin-right: 3.5rem; margin-top: 0.8rem;" class="btn btn-info btn-2X" type="submit" value="Logout"> 
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
           <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -44,6 +49,8 @@
       </button>
     </form>
     <% } %>
+  </li>
+  </ul>
   </div>
   </div>
 </nav>
