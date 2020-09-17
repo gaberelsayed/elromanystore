@@ -11,7 +11,9 @@
         <% for(let product of products) { %>
             <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card" style="width: 100%;">
-                    <img src="/<%= product.image%>" class="card-img-top" style="height: 200px;">
+                    <a href="/ar_product/<%= product._id%>">
+                        <img src="/<%= product.image%>" class="card-img-top" style="height: 200px;">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">
                         <a href="/ar_product/<%= product._id%>"><%= product.name%></a>
