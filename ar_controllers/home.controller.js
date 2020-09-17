@@ -25,7 +25,7 @@ exports.getHome = (req, res, next) => {
 exports.deleProduct = (req, res, next) => {
     var id = req.body.id;
     productsModel.delProduct(id)
-    .then(() => res.redirect("/ar_index"))
+    .then(() => res.redirect("/"))
     .catch(err => {
         res.redirect("/ar_error");
     });
